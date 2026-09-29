@@ -1,13 +1,13 @@
 /* ====== SHUDHU EI FILE EDIT KORLEI HOBE ====== */
 const SITE = {
-  name: "Your Name",                      // <-- apnar nam
+  name: "Ruhul Amin",                      // <-- apnar nam
   role: "Web Developer",                  // <-- apnar porichoy
   tagline: "Ami clean, fast ar shohoje bebohar kora website ar app baniye thaki.", // <-- hero er choto porichoy
   location: "Dhaka, Bangladesh",
   cv: "downloads/cv.pdf",                  // CV thakle downloads/ e rakhun, na thakle "" rakhun
   photo: "assets/photo.jpg",              // <-- nijer chobi assets/ folder e dile hoy (na dile initials dekhabe)
   about: [
-    "Ami [Your Name], ekjon [Web Developer]. Ami clean, fast ar user-friendly website ar app baniye thaki.",
+    "Ami Ruhul Amin, ekjon Web Developer. Ami clean, fast ar user-friendly website ar app baniye thaki.",
     "Notun kichu shikhte ar real problem solve korte amar bhalo lage. Ekhon ami [kon kaj/study] niye kaj korchi."
   ],
   skills: [
@@ -17,30 +17,28 @@ const SITE = {
   ],
   projects: [
     {
-      title: "Project One",
-      desc: "Ei project ta ki kore, ki shomoshsha shomadhan kore — 1-2 line e likhun.",
-      tech: ["HTML", "CSS", "JavaScript"],
-      live: "https://example.com",         // live link (na thakle "" rakhun)
-      code: "https://github.com/username/project-one", // GitHub link (na thakle "")
-      image: "",                           // screenshot: "assets/p1.jpg" (na dile auto preview)
-      file: ""                              // downloads/ folder er file, jemon "downloads/app.apk"
-    },
-    {
-      title: "Project Two",
-      desc: "Ekta Android app / tool er short biboron.",
-      tech: ["Kotlin", "Firebase"],
-      live: "",
-      code: "https://github.com/username/project-two",
-      image: "",
-      file: "downloads/sample-app.apk"
+      title: "RumeDio Shop",
+      desc: "An online marketplace for shoppers in Bangladesh. Customers browse mobiles, fashion, electronics and groceries, add items to a cart and pay with cash on delivery.",
+      points: [
+        "Product catalogue with a dedicated flash sale page",
+        "Shopping cart, customer login and account registration",
+        "My orders page where customers see their order history",
+        "Location-based delivery pricing: Dhaka ৳60, outside Dhaka ৳120, free in Dhaka over ৳1,500",
+        "Help and support centre for customers"
+      ],
+      tech: ["Single-page app", "Cash on delivery", "Hosted on Vercel"],   // <-- asol tech stack likhe din (jemon React, Firebase)
+      live: "https://rumedio.vercel.app/#/",
+      code: "",
+      image: "",                           // shop er screenshot: "assets/rumedio.jpg"
+      file: ""
     }
   ],
   contact: {
-    email: "you@example.com",
+    email: "ruhulamineasy@gmail.com",
     links: [
-      { label: "GitHub",   url: "https://github.com/username" },
-      { label: "LinkedIn", url: "https://linkedin.com/in/username" },
-      { label: "Facebook", url: "https://facebook.com/username" }
+      { label: "WhatsApp", url: "https://wa.me/8801933141533" },
+      { label: "Facebook", url: "https://fb.com/ruhulamineasy" },
+      { label: "GitHub",   url: "https://github.com/ruhul-amin33" }
     ]
   }
 };

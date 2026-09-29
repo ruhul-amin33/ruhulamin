@@ -26,6 +26,7 @@ $('projectList').innerHTML = SITE.projects.map(p => `
       : `<div class="mock"><i><b></b><b></b><b></b></i><span>${esc(p.title[0])}</span></div>`}</div>
     <div class="card-body">
       <h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
+      ${(p.points||[]).length ? `<ul class="points">${p.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
       <ul class="tech">${p.tech.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
       <div class="btns">
         ${p.live ? btn(p.live, 'Live demo', 'primary sm', ext) : ''}
