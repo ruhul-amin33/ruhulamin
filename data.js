@@ -2,7 +2,9 @@
 const SITE = {
   name: "Your Name",                      // <-- apnar nam
   role: "Web Developer",                  // <-- apnar porichoy
+  tagline: "Ami clean, fast ar shohoje bebohar kora website ar app baniye thaki.", // <-- hero er choto porichoy
   location: "Dhaka, Bangladesh",
+  cv: "downloads/cv.pdf",                  // CV thakle downloads/ e rakhun, na thakle "" rakhun
   photo: "assets/photo.jpg",              // <-- nijer chobi assets/ folder e dile hoy (na dile initials dekhabe)
   about: [
     "Ami [Your Name], ekjon [Web Developer]. Ami clean, fast ar user-friendly website ar app baniye thaki.",
@@ -20,6 +22,7 @@ const SITE = {
       tech: ["HTML", "CSS", "JavaScript"],
       live: "https://example.com",         // live link (na thakle "" rakhun)
       code: "https://github.com/username/project-one", // GitHub link (na thakle "")
+      image: "",                           // screenshot: "assets/p1.jpg" (na dile auto preview)
       file: ""                              // downloads/ folder er file, jemon "downloads/app.apk"
     },
     {
@@ -28,6 +31,7 @@ const SITE = {
       tech: ["Kotlin", "Firebase"],
       live: "",
       code: "https://github.com/username/project-two",
+      image: "",
       file: "downloads/sample-app.apk"
     }
   ],

@@ -4,34 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Your Name — Web Developer</title>
-<meta name="description" content="Personal portfolio of Your Name: about, skills and projects.">
+<meta name="description" content="Personal portfolio: about, skills and projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="layout">
-  <aside class="side">
-    <div class="avatar" id="avatar"></div>
-    <h1 id="name"></h1>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="#top" id="brand"></a>
+  <nav><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a class="cta" href="#contact">Contact</a></nav>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap hero-grid">
+  <div class="hero-text">
     <p class="role" id="role"></p>
-    <p class="loc" id="loc"></p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </aside>
-  <main>
-    <section id="about"><h2>About</h2><div id="aboutText"></div></section>
-    <section id="skills"><h2>Skills</h2><div id="skillList"></div></section>
-    <section id="projects"><h2>Projects</h2><div id="projectList"></div></section>
-    <section id="contact"><h2>Contact</h2><p><a id="mail" class="mail"></a></p><div class="links" id="links"></div></section>
-    <footer id="foot"></footer>
-  </main>
-</div>
+    <h1 id="hello"></h1>
+    <p class="lead" id="tagline"></p>
+    <div class="btns"><a class="btn primary" href="#projects">View projects</a><a class="btn" id="cv" hidden download>Download CV</a></div>
+  </div>
+  <div class="photo"><div class="frame" id="avatar"></div></div>
+</div></section>
+
+<section id="about"><div class="wrap two"><h2>About me</h2><div id="aboutText" class="prose"></div></div></section>
+<section id="skills"><div class="wrap two"><h2>Skills</h2><div id="skillList"></div></div></section>
+<section id="projects"><div class="wrap"><h2>Projects</h2><div class="grid" id="projectList"></div></div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Let's work together</h2>
+  <a class="mail" id="mail"></a>
+  <div class="btns" id="links"></div>
+  <footer id="foot"></footer>
+</div></section>
 <script src="data.js"></script>
 <script src="script.js"></script>
 </body>
