@@ -66,6 +66,7 @@ figcaption{margin-top:12px;font-size:13px;letter-spacing:.06em;color:var(--muted
 .proj p{margin:0 0 20px;color:var(--muted);max-width:40em}
 .points{list-style:none;margin:0 0 22px;padding:0}
 .points li{padding:9px 0;border-top:1px solid var(--line);font-size:16px}.points li:last-child{border-bottom:1px solid var(--line)}
+.proj .note{margin:18px 0 0;font-size:14px;color:var(--muted);max-width:38em}
 .tech{margin:0 0 26px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
 
 .contact{background:var(--dark);color:#ecebe4;border:0}

@@ -28,7 +28,7 @@ $('skillList').innerHTML = SITE.skills.map(g =>
 $('projectList').innerHTML = SITE.projects.map((p, i) => `
   <article class="proj rv">
     ${p.image ? `<div class="shot"><img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy"></div>`
-      : `<div class="panel"><small>${esc(host(p.live) || 'Project')}</small><strong>${esc(p.title)}</strong></div>`}
+      : `<div class="panel"><small>${esc(host(p.live) || p.kind || 'Project')}</small><strong>${esc(p.title)}</strong></div>`}
     <div>
       <span class="n">№ ${String(i + 1).padStart(2, '0')}</span>
       <h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
@@ -37,8 +37,9 @@ $('projectList').innerHTML = SITE.projects.map((p, i) => `
       <p class="hl">
         ${p.live ? lnk(p.live, 'Live site ↗', ext) : ''}
         ${p.code ? lnk(p.code, 'Source code ↗', ext) : ''}
-        ${p.file ? lnk(p.file, 'Download app ↓', 'download') : ''}
+        ${p.file ? lnk(p.file, `Download ${esc(p.fileLabel || 'app')} ↓`, 'download') : ''}
       </p>
+      ${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
     </div>
   </article>`).join('');
 
