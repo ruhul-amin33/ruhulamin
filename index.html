@@ -14,10 +14,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ruhul Amin","jobTitle":"Web Developer","email":"ruhulamineasy@gmail.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Sylhet Engineering College"},"address":{"@type":"PostalAddress","addressCountry":"BD"}}</script>
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js');try{if(sessionStorage.getItem('seen'))document.documentElement.classList.add('seen');else sessionStorage.setItem('seen','1')}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="splash" aria-hidden="true"><img src="assets/logo.svg" width="96" height="96" alt=""></div>
 <div class="progress" id="progress"></div>
 <header class="top"><div class="wrap bar">
   <a class="brand" href="#top" aria-label="Home"><img src="assets/logo.svg" width="34" height="34" alt=""><span id="brand"></span></a>
@@ -31,12 +32,14 @@
     <div>
       <h1 id="hello"></h1>
       <p class="lead" id="tagline"></p>
-      <p class="hl"><a href="#projects">View selected work ↓</a><a id="cv" hidden download>Download CV ↗</a></p>
+      <div class="cta-row"><a class="btn solid" href="#contact">Get in touch</a><a class="btn" href="#projects">View my work</a><a class="btn text" id="cv" hidden download>Download CV ↗</a></div>
     </div>
     <figure class="photo"><div class="frame" id="avatar"></div><figcaption id="cap"></figcaption></figure>
   </div>
   <dl class="meta" id="meta"></dl>
 </div></section>
+
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
 
 <section id="about"><div class="wrap row"><h2>About</h2><div id="aboutText" class="prose rv"></div></div></section>
 <section id="services"><div class="wrap row"><h2>Services</h2><div class="svc" id="svcList"></div></div></section>
@@ -44,10 +47,20 @@
 <section id="projects"><div class="wrap"><div class="row head"><h2>Selected work</h2></div><div id="projectList"></div></div></section>
 
 <section class="contact" id="contact"><div class="wrap">
-  <p class="kicker">Contact</p>
-  <h2 class="big">Have a project?<br><em>Let's talk.</em></h2>
-  <a class="mail" id="mail"></a>
-  <p class="hl" id="links"></p>
+  <div class="contact-grid">
+    <div>
+      <p class="kicker">Contact</p>
+      <h2 class="big">Have a project?<br><em>Let's talk.</em></h2>
+      <a class="mail" id="mail"></a>
+      <p class="hl" id="links"></p>
+    </div>
+    <form class="form" id="form">
+      <label>Your name<input name="name" required autocomplete="name"></label>
+      <label>Your project<textarea name="msg" rows="5" required placeholder="Tell me a little about what you need"></textarea></label>
+      <button class="btn solid" type="submit">Send message</button>
+      <small>This opens your email app with the message ready to send.</small>
+    </form>
+  </div>
   <footer><img src="assets/logo.svg" width="26" height="26" alt=""><span id="foot"></span><a href="#top" class="totop">Back to top ↑</a></footer>
 </div></section>
 <script src="data.js"></script>

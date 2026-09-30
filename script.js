@@ -8,7 +8,7 @@ document.title = `${SITE.name} — ${SITE.role}`;
 $('brand').textContent = SITE.name;
 $('year').textContent = new Date().getFullYear();
 const parts = SITE.name.trim().split(/\s+/), last = parts.pop();
-$('hello').innerHTML = `${esc(parts.join(' ') || last)}${parts.length ? `<br><em>${esc(last)}</em>` : ''}`;
+$('hello').innerHTML = `<span class="ln"><span>${esc(parts.join(' ') || last)}</span></span>` + (parts.length ? `<span class="ln"><span><em>${esc(last)}</em></span></span>` : '');
 $('tagline').textContent = SITE.tagline;
 $('cap').textContent = `${SITE.name} — ${SITE.location}`;
 if (SITE.cv) { $('cv').href = SITE.cv; $('cv').hidden = false; }
@@ -20,15 +20,21 @@ const img = new Image(); img.alt = SITE.name;
 img.onload = () => { $('avatar').textContent = ''; $('avatar').appendChild(img); };
 $('avatar').textContent = initials; img.src = SITE.photo;
 
-$('aboutText').innerHTML = SITE.about.map(p => `<p>${esc(p)}</p>`).join('');
+$('aboutText').innerHTML = SITE.about.map(p => `<p>${esc(p)}</p>`).join('')
+  + `<div class="edu"><span>Education</span><strong>${esc(SITE.education.degree)}</strong><em>${esc(SITE.education.school)}</em></div>`;
 $('svcList').innerHTML = SITE.services.map(s => `<article class="rv"><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></article>`).join('');
 $('skillList').innerHTML = SITE.skills.map(g =>
   `<div class="group rv"><h3>${esc(g.group)}</h3><p>${g.items.map(esc).join('<i>/</i>')}</p></div>`).join('');
 
+const isPhone = p => /android|ios|mobile/i.test(p.kind || '');
+const visual = p => {
+  const shot = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy">` : '';
+  if (isPhone(p)) return `<div class="visual"><div class="phone">${shot || `<span class="ic">${esc(p.title[0])}</span><b>${esc(p.title)}</b><small>${esc(p.kind)}</small>`}</div></div>`;
+  return `<div class="visual"><div class="browser"><i><u></u><u></u><u></u><em>${esc(host(p.live) || p.title)}</em></i><div class="pg ${p.image ? 'has' : ''}">${shot || `<b>${esc(p.title)}</b><s></s><s></s><s></s>`}</div></div></div>`;
+};
 $('projectList').innerHTML = SITE.projects.map((p, i) => `
   <article class="proj rv">
-    ${p.image ? `<div class="shot"><img src="${esc(p.image)}" alt="${esc(p.title)} screenshot" loading="lazy"></div>`
-      : `<div class="panel"><small>${esc(host(p.live) || p.kind || 'Project')}</small><strong>${esc(p.title)}</strong></div>`}
+    ${visual(p)}
     <div>
       <span class="n">№ ${String(i + 1).padStart(2, '0')}</span>
       <h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
@@ -66,9 +72,20 @@ addEventListener('scroll', () => {
   $('progress').style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
 }, { passive: true });
 const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }), { threshold: .1 });
-document.querySelectorAll('.rv').forEach(el => rv.observe(el));
+document.querySelectorAll('.rv,.row').forEach(el => rv.observe(el));
 const links = [...document.querySelectorAll('#nav a')];
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.hash === '#' + e.target.id));
 }), { rootMargin: '-45% 0px -50% 0px' });
 document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+
+$('form').onsubmit = e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const body = `${f.get('msg')}\n\n— ${f.get('name')}`;
+  location.href = `mailto:${SITE.contact.email}?subject=${encodeURIComponent('Project inquiry from ' + f.get('name'))}&body=${encodeURIComponent(body)}`;
+};
+
+// skills ticker
+const tickSet = SITE.skills.flatMap(g => g.items).map(x => `<span>${esc(x)}</span><i></i>`).join('');
+$('tick').innerHTML = (tickSet + tickSet).repeat(2);

@@ -1,8 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Ruhul Amin logo">
-  <rect width="48" height="48" rx="8" fill="#0E5A4B"/>
-  <g fill="none" stroke="#F4F3EE" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter">
-    <path d="M10 36V12h8.5a6 6 0 0 1 0 12H10M17.5 24L24 36"/>
-    <path d="M26 36l5.5-24L37 36M28.3 28.5h6.4"/>
-  </g>
-  <rect x="36" y="9" width="4" height="4" fill="#E8452C"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ruhul Amin logo">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17846c"/><stop offset="1" stop-color="#0a3f35"/></linearGradient>
+<clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath>
+<style>
+.r{stroke-dasharray:120;stroke-dashoffset:120;animation:draw .75s .1s cubic-bezier(.65,0,.35,1) forwards}
+.l2{animation-delay:.6s;animation-duration:.35s}
+.d{transform-box:fill-box;transform-origin:center;transform:scale(0) rotate(-45deg);animation:pop .45s .85s cubic-bezier(.3,1.7,.5,1) forwards}
+.s{animation:sheen 1s 1s ease-in-out both}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{transform:scale(1) rotate(0)}}
+@keyframes sheen{from{transform:translateX(0)}to{transform:translateX(120px)}}
+@media (prefers-reduced-motion:reduce){.r{animation:none;stroke-dashoffset:0}.d{animation:none;transform:none}.s{display:none}}
+</style>
+</defs>
+<rect width="64" height="64" rx="14" fill="url(#g)"/>
+<rect x=".75" y=".75" width="62.5" height="62.5" rx="13.3" fill="none" stroke="#fff" stroke-opacity=".16"/>
+<g clip-path="url(#c)"><g class="s"><rect x="-30" y="-10" width="14" height="90" fill="#fff" opacity=".24" transform="skewX(-20)"/></g></g>
+<g fill="none" stroke="#F4F3EE" stroke-width="5" stroke-linejoin="miter">
+<path class="r" d="M20 49V15h15a9.5 9.5 0 0 1 0 19H20"/>
+<path class="r l2" d="M33 34l9 11"/>
+</g>
+<rect class="d" x="41" y="43" width="8" height="8" fill="#E8452C"/>
 </svg>
