@@ -3,22 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ruhul Amin — AI Developer & Vibe Coder</title>
-<meta name="description" content="Ruhul Amin is an AI developer, vibe coder and Electrical and Electronic Engineering student at Sylhet Engineering College, building websites and apps with AI.">
+<title>Ruhul Amin — Vibe Coder & AI-Assisted Developer</title>
+<meta name="description" content="Ruhul Amin is a vibe coder who builds websites and apps by coding with AI, and an Electrical and Electronic Engineering student at Sylhet Engineering College.">
 <meta name="theme-color" content="#0d5561">
-<meta property="og:title" content="Ruhul Amin — AI Developer & Vibe Coder">
-<meta property="og:description" content="Websites and apps built with AI, by an engineering student from Bangladesh.">
+<meta property="og:title" content="Ruhul Amin — Vibe Coder & AI-Assisted Developer">
+<meta property="og:description" content="Websites and apps built by coding with AI, by an engineering student from Bangladesh.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ruhul Amin","jobTitle":"AI Developer & Vibe Coder","email":"ruhulamineasy@gmail.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Sylhet Engineering College"},"address":{"@type":"PostalAddress","addressCountry":"BD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ruhul Amin","jobTitle":"Vibe Coder & AI-Assisted Developer","email":"ruhulamineasy@gmail.com","alumniOf":{"@type":"CollegeOrUniversity","name":"Sylhet Engineering College"},"address":{"@type":"PostalAddress","addressCountry":"BD"}}</script>
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js');try{if(sessionStorage.getItem('seen'))document.documentElement.classList.add('seen');else sessionStorage.setItem('seen','1')}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#about">Skip to content</a>
+<div class="glow" id="glow" aria-hidden="true"></div>
 <div id="splash" aria-hidden="true"><img src="assets/logo.svg" width="96" height="96" alt=""></div>
 <div class="progress" id="progress"></div>
 <header class="top"><div class="wrap bar">
@@ -27,11 +28,12 @@
   <div class="actions"><button class="tx" id="theme" type="button">Theme</button><button class="tx menu" id="menu" type="button" aria-expanded="false">Menu</button></div>
 </div></header>
 
-<section class="hero" id="top"><div class="wrap">
+<section class="hero" id="top"><div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div><div class="wrap">
   <p class="kicker">Portfolio <span id="year"></span></p>
   <div class="hero-grid">
     <div>
       <h1 id="hello"></h1>
+      <p class="typed" aria-hidden="true">Building <b id="typed"></b><i class="caret"></i></p>
       <p class="lead" id="tagline"></p>
       <div class="cta-row"><a class="btn solid" href="#contact">Get in touch</a><a class="btn" href="#projects">View my work</a><a class="btn text" id="cv" hidden download>Download CV ↗</a></div>
     </div>
@@ -54,6 +56,7 @@
       <p class="kicker">Contact</p>
       <h2 class="big">Have a project?<br><em>Let's talk.</em></h2>
       <a class="mail" id="mail"></a>
+      <p class="clock"><i class="ping"></i><span id="clock"></span></p>
       <p class="hl" id="links"></p>
     </div>
     <form class="form" id="form">

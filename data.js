@@ -1,26 +1,28 @@
 /* ====== SHUDHU EI FILE EDIT KORLEI HOBE ====== */
 const SITE = {
   name: "Ruhul Amin",                      // <-- apnar nam
-  role: "AI Developer & Vibe Coder",                  // <-- apnar porichoy
-  tagline: "I turn ideas into working apps and websites using AI, with an engineer's eye for every detail.", // <-- hero er choto porichoy
+  role: "Vibe Coder & AI-Assisted Developer",                  // <-- apnar porichoy
+  tagline: "I build websites and apps by coding with AI, and I bring an engineer's eye to every detail.", // <-- hero er choto porichoy
+  typed: ["websites", "Android apps", "online stores", "ideas with AI"],   // <-- hero te likhe likhe dekhano shabdo
+  floaters: ["Vibe coding", "Android", "Web apps"],                        // <-- chobir pashe vasha chip
   status: "Available for new projects",   // <-- hero er sobuj status; na chaile "" rakhun
   location: "Bangladesh",
   education: { school: "Sylhet Engineering College", degree: "Electrical and Electronic Engineering" },
-  cv: "downloads/cv.pdf",                  // CV thakle downloads/ e rakhun, na thakle "" rakhun
+  cv: "",                                // CV PDF downloads/ e rakhun, tarpor "downloads/cv.pdf" likhun
   photo: "assets/photo.jpg",              // <-- nijer chobi assets/ folder e dile hoy (na dile initials dekhabe)
   about: [
-    "I'm Ruhul Amin, an AI developer and vibe coder, and an Electrical and Electronic Engineering student at Sylhet Engineering College.",
-    "I build websites, web apps and Android apps by pairing AI tools with an engineer's problem-solving mindset. That lets me take an idea from prompt to a live product quickly, as with RumeDio Shop and YT BG Player.",
+    "I'm Ruhul Amin, a vibe coder who builds websites and apps by coding with AI, and an Electrical and Electronic Engineering student at Sylhet Engineering College.",
+    "I don't build AI models. I use AI tools to write, test and ship code faster, then review the result with an engineer's problem-solving mindset. That is how I took RumeDio Shop and YT BG Player from idea to a working product.",
     "I care about clean results: fast, reliable and easy to use. I keep learning new AI tools and turn real problems into simple digital products."
   ],
   services: [
-    { title: "AI-Assisted Development", text: "Fast, high-quality websites and apps built by combining AI tools with careful human review." },
+    { title: "AI-Assisted Development", text: "Websites and apps built by coding with AI tools, then reviewed and tested by hand for quality." },
     { title: "Websites & E-commerce", text: "Responsive websites and online stores with catalogue, cart, accounts and cash-on-delivery checkout, like RumeDio Shop." },
     { title: "Android Apps", text: "Focused Android apps, like YT BG Player for background listening." },
     { title: "UI & Responsive Design", text: "Sharp interfaces that work smoothly on phones, tablets and desktops." }
   ],
   skills: [
-    { group: "AI", items: ["Vibe coding", "Prompt engineering", "AI-assisted development"] },
+    { group: "Coding with AI", items: ["Vibe coding", "Prompt engineering", "AI-assisted development"] },
     { group: "Web", items: ["HTML", "CSS", "JavaScript", "Responsive design", "Single-page apps"] },
     { group: "Mobile", items: ["Android", "Kotlin", "Media3"] },
     { group: "Tools", items: ["Git", "GitHub", "Vercel"] },

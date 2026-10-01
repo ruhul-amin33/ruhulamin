@@ -13,7 +13,7 @@ $('tagline').textContent = SITE.tagline;
 $('cap').textContent = `${SITE.name} — ${SITE.location}`;
 if (SITE.cv) { $('cv').href = SITE.cv; $('cv').hidden = false; }
 $('meta').innerHTML = [['Role', SITE.role], ['Studying', `${SITE.education.degree}, ${SITE.education.school}`], ['Status', SITE.status || SITE.contact.email]]
-  .map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
+  .map(([k, v]) => `<div><dt>${k}</dt><dd>${k === 'Status' && SITE.status ? '<i class="ping"></i>' : ''}${esc(v)}</dd></div>`).join('');
 
 const initials = SITE.name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
 const img = new Image(); img.alt = SITE.name;
@@ -24,7 +24,7 @@ $('aboutText').innerHTML = SITE.about.map(p => `<p>${esc(p)}</p>`).join('')
   + `<div class="edu"><span>Education</span><strong>${esc(SITE.education.degree)}</strong><em>${esc(SITE.education.school)}</em></div>`;
 $('svcList').innerHTML = SITE.services.map(s => `<article class="rv"><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></article>`).join('');
 $('skillList').innerHTML = SITE.skills.map(g =>
-  `<div class="group rv"><h3>${esc(g.group)}</h3><p>${g.items.map(x => `<span>${esc(x)}</span>`).join('<i>/</i>')}</p></div>`).join('');
+  `<div class="group rv"><h3>${esc(g.group)}</h3><p>${g.items.map(x => `<span>${esc(x)}</span>`).join(' <i>/</i> ')}</p></div>`).join('');
 
 const isPhone = p => /android|ios|mobile/i.test(p.kind || '');
 const visual = p => {
@@ -124,3 +124,24 @@ if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:
 }
 
 addEventListener('scroll', () => document.querySelector('.top').classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+// ---- live animations ----
+const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+(SITE.floaters || []).forEach((t, i) => { const s = document.createElement('span'); s.className = 'tag t' + (i + 1); s.innerHTML = `<u></u>${esc(t)}`; $('stage').appendChild(s); });
+const words = SITE.typed || ['websites', 'apps'], te = $('typed');
+if (reduced) te.textContent = words[0];
+else { let w = 0, c = 0, del = false;
+  (function tick() {
+    const word = words[w]; c += del ? -1 : 1; te.textContent = word.slice(0, c);
+    let t = del ? 35 : 75;
+    if (!del && c === word.length) { t = 1700; del = true; } else if (del && c === 0) { del = false; w = (w + 1) % words.length; t = 350; }
+    setTimeout(tick, t);
+  })(); }
+const clk = () => { $('clock').textContent = 'Local time in Bangladesh: ' + new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Dhaka', hour: 'numeric', minute: '2-digit' }).format(new Date()); };
+clk(); setInterval(clk, 30000);
+if (matchMedia('(hover:hover)').matches && !reduced) {
+  const g = $('glow'); let x = innerWidth / 2, y = innerHeight / 2, tx = x, ty = y;
+  addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; g.style.opacity = 1; }, { passive: true });
+  document.addEventListener('pointerleave', () => g.style.opacity = 0);
+  (function loop() { x += (tx - x) * .1; y += (ty - y) * .1; g.style.transform = `translate(${x}px,${y}px)`; requestAnimationFrame(loop); })();
+}
