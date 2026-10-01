@@ -113,3 +113,12 @@ if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:
     b.addEventListener('pointerleave', () => b.style.translate = '');
   });
 }
+
+if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+  const ph = document.querySelector('.photo'), st = $('stage');
+  ph.addEventListener('pointermove', e => {
+    const r = ph.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    st.style.setProperty('--ry', x * 16 + 'deg'); st.style.setProperty('--rx', -y * 16 + 'deg');
+  });
+  ph.addEventListener('pointerleave', () => { st.style.setProperty('--rx', '0deg'); st.style.setProperty('--ry', '0deg'); });
+}

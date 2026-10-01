@@ -237,3 +237,19 @@ html:not(.seen){--o:1.25s}
 .photo:hover::before{translate:22px 22px}
 .mail{transition:color .3s,border-color .3s,letter-spacing .4s}.mail:hover{letter-spacing:.01em}
 @media (max-width:860px){.proj{margin:0;padding:36px 0}.svc article{padding-right:0}.svc article::after{display:none}.svc article::before{inset:0}}
+
+/* ---- v6 3D photo ---- */
+.photo::before,.photo::after{content:none}
+.photo{perspective:1100px}
+.stage{position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s ease-out;animation:lift 7s ease-in-out infinite}
+@keyframes lift{50%{translate:0 -8px}}
+.stage .frame{box-shadow:0 44px 60px -30px rgba(6,30,24,.6),0 18px 30px -18px rgba(0,0,0,.4)}
+.stage i{position:absolute;inset:0;pointer-events:none;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.stage .l1{background:linear-gradient(135deg,#17846c,#0a3f35);transform:translate3d(16px,16px,-28px);box-shadow:0 36px 46px -24px rgba(0,0,0,.55)}
+.stage .l2{border:1.5px solid var(--ink);transform:translate3d(32px,32px,-56px)}
+.photo:hover .l1{transform:translate3d(22px,22px,-36px)}
+.photo:hover .l2{transform:translate3d(44px,44px,-72px)}
+.stage .sq{position:absolute;top:-14px;right:-14px;width:36px;height:36px;background:var(--hot);transform:translateZ(46px);box-shadow:0 12px 16px -6px rgba(232,69,44,.6)}
+.stage::after{content:"";position:absolute;left:10%;right:-6%;bottom:-40px;height:30px;background:radial-gradient(closest-side,rgba(0,0,0,.38),transparent);filter:blur(7px);transform:translateZ(-90px)}
+figcaption{margin-top:52px}
+@media (max-width:860px){.stage .l1{transform:translate3d(10px,10px,-20px)}.stage .l2{transform:translate3d(20px,20px,-40px)}figcaption{margin-top:34px}.stage::after{display:none}}
