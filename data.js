@@ -20,14 +20,22 @@ const SITE = {
     { title: "UI & Responsive Design", text: "Sharp interfaces that work smoothly on phones, tablets and desktops." }
   ],
   skills: [
-    { group: "Frontend", items: ["HTML", "CSS", "JavaScript", "React"] },
-    { group: "Backend",  items: ["Node.js", "Python"] },
-    { group: "Tools",    items: ["Git & GitHub", "Figma", "VS Code"] }
+    { group: "Web", items: ["HTML", "CSS", "JavaScript", "Responsive design", "Single-page apps"] },
+    { group: "Mobile", items: ["Android", "Kotlin", "Media3"] },
+    { group: "Tools", items: ["Git", "GitHub", "Vercel"] },
+    { group: "Engineering", items: ["Electrical Engineering", "Electronics"] }
+  ],
+  process: [
+    { title: "Understand", text: "We talk through your goals, audience and budget so the scope is clear before any code is written." },
+    { title: "Design", text: "I plan the structure and look first, so you can see the direction early and give feedback." },
+    { title: "Build", text: "Clean, fast, mobile-friendly code, checked across different screen sizes." },
+    { title: "Launch", text: "I deploy it, make sure everything works and hand over what you need to manage it." }
   ],
   projects: [
     {
       title: "RumeDio Shop",
       kind: "Web app",
+      facts: [["Platform", "Web"], ["Payments", "Cash on delivery"], ["Delivery", "Dhaka & all districts"]],
       desc: "An online marketplace for shoppers in Bangladesh. Customers browse mobiles, fashion, electronics and groceries, add items to a cart and pay with cash on delivery.",
       points: [
         "Product catalogue with a dedicated flash sale page",
@@ -45,6 +53,7 @@ const SITE = {
     {
       title: "YT BG Player",
       kind: "Android app",
+      facts: [["Platform", "Android 7.0+"], ["Version", "1.0"], ["Size", "9.4 MB"]],
       desc: "An Android app for listening in the background. Media keeps playing with notification controls while you use other apps or lock your screen.",
       points: [
         "Background playback with media notification controls",

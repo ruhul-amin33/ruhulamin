@@ -24,7 +24,7 @@ $('aboutText').innerHTML = SITE.about.map(p => `<p>${esc(p)}</p>`).join('')
   + `<div class="edu"><span>Education</span><strong>${esc(SITE.education.degree)}</strong><em>${esc(SITE.education.school)}</em></div>`;
 $('svcList').innerHTML = SITE.services.map(s => `<article class="rv"><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></article>`).join('');
 $('skillList').innerHTML = SITE.skills.map(g =>
-  `<div class="group rv"><h3>${esc(g.group)}</h3><p>${g.items.map(esc).join('<i>/</i>')}</p></div>`).join('');
+  `<div class="group rv"><h3>${esc(g.group)}</h3><p>${g.items.map(x => `<span>${esc(x)}</span>`).join('<i>/</i>')}</p></div>`).join('');
 
 const isPhone = p => /android|ios|mobile/i.test(p.kind || '');
 const visual = p => {
@@ -38,6 +38,7 @@ $('projectList').innerHTML = SITE.projects.map((p, i) => `
     <div>
       <span class="n">№ ${String(i + 1).padStart(2, '0')}</span>
       <h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
+      ${(p.facts || []).length ? `<dl class="facts">${p.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
       ${(p.points || []).length ? `<ul class="points">${p.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
       <p class="tech">${p.tech.map(esc).join(' · ')}</p>
       <p class="hl">
@@ -89,3 +90,26 @@ $('form').onsubmit = e => {
 // skills ticker
 const tickSet = SITE.skills.flatMap(g => g.items).map(x => `<span>${esc(x)}</span><i></i>`).join('');
 $('tick').innerHTML = (tickSet + tickSet).repeat(2);
+
+$('procList').innerHTML = SITE.process.map((s, i) => `<article class="rv"><b>${i + 1}</b><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></article>`).join('');
+document.querySelector('#projects h2').insertAdjacentHTML('beforeend', `<sup>${String(SITE.projects.length).padStart(2, '0')}</sup>`);
+document.querySelectorAll('#procList .rv').forEach(el => rv.observe(el));
+
+// hover interactions (skipped on touch screens and for reduced motion)
+if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+  document.querySelectorAll('.visual').forEach(v => {
+    v.addEventListener('pointermove', e => {
+      const r = v.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      v.style.setProperty('--ry', x * 14 + 'deg'); v.style.setProperty('--rx', -y * 14 + 'deg');
+      v.style.setProperty('--mx', (x + .5) * 100 + '%'); v.style.setProperty('--my', (y + .5) * 100 + '%');
+    });
+    v.addEventListener('pointerleave', () => { v.style.setProperty('--rx', '0deg'); v.style.setProperty('--ry', '0deg'); });
+  });
+  document.querySelectorAll('.btn:not(.text)').forEach(b => {
+    b.addEventListener('pointermove', e => {
+      const r = b.getBoundingClientRect();
+      b.style.translate = `${(e.clientX - r.left - r.width / 2) * .16}px ${(e.clientY - r.top - r.height / 2) * .3}px`;
+    });
+    b.addEventListener('pointerleave', () => b.style.translate = '');
+  });
+}
