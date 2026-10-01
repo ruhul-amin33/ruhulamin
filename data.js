@@ -4,7 +4,6 @@ const SITE = {
   role: "Vibe Coder & AI-Assisted Developer",                  // <-- apnar porichoy
   tagline: "I build websites and apps by coding with AI, and I bring an engineer's eye to every detail.", // <-- hero er choto porichoy
   typed: ["websites", "Android apps", "online stores", "ideas with AI"],   // <-- hero te likhe likhe dekhano shabdo
-  floaters: ["Vibe coding", "Android", "Web apps"],                        // <-- chobir pashe vasha chip
   status: "Available for new projects",   // <-- hero er sobuj status; na chaile "" rakhun
   location: "Bangladesh",
   education: { school: "Sylhet Engineering College", degree: "Electrical and Electronic Engineering" },

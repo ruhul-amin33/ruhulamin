@@ -127,7 +127,6 @@ addEventListener('scroll', () => document.querySelector('.top').classList.toggle
 
 // ---- live animations ----
 const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
-(SITE.floaters || []).forEach((t, i) => { const s = document.createElement('span'); s.className = 'tag t' + (i + 1); s.innerHTML = `<u></u>${esc(t)}`; $('stage').appendChild(s); });
 const words = SITE.typed || ['websites', 'apps'], te = $('typed');
 if (reduced) te.textContent = words[0];
 else { let w = 0, c = 0, del = false;
