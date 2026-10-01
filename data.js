@@ -25,7 +25,8 @@ const SITE = {
     { group: "Web", items: ["HTML", "CSS", "JavaScript", "Responsive design", "Single-page apps"] },
     { group: "Mobile", items: ["Android", "Kotlin", "Media3"] },
     { group: "Tools", items: ["Git", "GitHub", "Vercel"] },
-    { group: "Engineering", items: ["Electrical Engineering", "Electronics"] }
+    { group: "Engineering", items: ["Electrical Engineering", "Electronics", "MATLAB", "AutoCAD"] },
+    { group: "Office", items: ["MS Word", "MS Excel"] }
   ],
   process: [
     { title: "Understand", text: "We talk through your goals, audience and budget so the scope is clear before any code is written." },
