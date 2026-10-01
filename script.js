@@ -144,3 +144,7 @@ if (matchMedia('(hover:hover)').matches && !reduced) {
   document.addEventListener('pointerleave', () => g.style.opacity = 0);
   (function loop() { x += (tx - x) * .1; y += (ty - y) * .1; g.style.transform = `translate(${x}px,${y}px)`; requestAnimationFrame(loop); })();
 }
+
+// keep ticker speed constant (about 70px per second) however many skills there are
+const setTickSpeed = () => { const t = $('tick'); t.style.animationDuration = Math.max(20, (t.scrollWidth / 2) / 70) + 's'; };
+setTickSpeed(); document.fonts && document.fonts.ready.then(setTickSpeed);

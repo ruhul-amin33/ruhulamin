@@ -333,11 +333,13 @@ body{overflow-x:clip}
 @media (max-width:860px){.aurora span{filter:blur(46px)}}
 
 /* ---- v10 photo detail: seal, sweep, breathing ---- */
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes tick{0%,65%{transform:rotate(0)}85%,100%{transform:rotate(90deg)}}
+@keyframes sqturn{0%,65%{transform:rotate(0)}85%,100%{transform:rotate(90deg)}}
 .stage:hover .stage .frame{position:relative}
 .stage .frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.34) 50%,transparent 62%);transform:translateX(-120%);animation:sweep 9s 3.6s cubic-bezier(.45,0,.2,1) infinite}
 @keyframes sweep{0%{transform:translateX(-120%)}24%,100%{transform:translateX(120%)}}
 .stage .l1{animation:br1 7s ease-in-out infinite}.stage .l2{animation:br2 7s ease-in-out infinite}
 @keyframes br1{50%{translate:4px 4px}}@keyframes br2{50%{translate:9px 9px}}
-.stage .sq{animation:tick 6s 1s cubic-bezier(.65,0,.35,1) infinite}
+.stage .sq{animation:sqturn 6s 1s cubic-bezier(.65,0,.35,1) infinite}
+
+/* safety: an old index.html may still contain the removed badge */
+.seal,.stage>svg{display:none!important}
