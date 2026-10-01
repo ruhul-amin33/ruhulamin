@@ -122,3 +122,5 @@ if (matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:
   });
   ph.addEventListener('pointerleave', () => { st.style.setProperty('--rx', '0deg'); st.style.setProperty('--ry', '0deg'); });
 }
+
+addEventListener('scroll', () => document.querySelector('.top').classList.toggle('scrolled', scrollY > 8), { passive: true });

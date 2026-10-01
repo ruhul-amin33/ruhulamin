@@ -253,3 +253,30 @@ html:not(.seen){--o:1.25s}
 .stage::after{content:"";position:absolute;left:10%;right:-6%;bottom:-40px;height:30px;background:radial-gradient(closest-side,rgba(0,0,0,.38),transparent);filter:blur(7px);transform:translateZ(-90px)}
 figcaption{margin-top:52px}
 @media (max-width:860px){.stage .l1{transform:translate3d(10px,10px,-20px)}.stage .l2{transform:translate3d(20px,20px,-40px)}figcaption{margin-top:34px}.stage::after{display:none}}
+
+/* ---- v7 elevation system ---- */
+:root{--sh1:0 1px 2px rgba(10,30,24,.06),0 6px 12px -6px rgba(10,30,24,.12);
+--sh2:0 2px 4px rgba(10,30,24,.05),0 14px 24px -10px rgba(10,30,24,.18),0 30px 48px -26px rgba(10,30,24,.2);
+--sh3:0 4px 8px rgba(10,30,24,.05),0 26px 40px -16px rgba(10,30,24,.26),0 54px 80px -38px rgba(14,90,75,.34)}
+:root[data-theme=dark]{--sh1:0 1px 2px rgba(0,0,0,.45),0 6px 12px -6px rgba(0,0,0,.55);--sh2:0 2px 4px rgba(0,0,0,.4),0 14px 24px -10px rgba(0,0,0,.6),0 30px 48px -26px rgba(0,0,0,.6);--sh3:0 4px 8px rgba(0,0,0,.4),0 26px 40px -16px rgba(0,0,0,.65),0 54px 80px -38px rgba(0,0,0,.7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--sh1:0 1px 2px rgba(0,0,0,.45),0 6px 12px -6px rgba(0,0,0,.55);--sh2:0 2px 4px rgba(0,0,0,.4),0 14px 24px -10px rgba(0,0,0,.6),0 30px 48px -26px rgba(0,0,0,.6);--sh3:0 4px 8px rgba(0,0,0,.4),0 26px 40px -16px rgba(0,0,0,.65),0 54px 80px -38px rgba(0,0,0,.7)}}
+
+.top{transition:box-shadow .35s}.top.scrolled{box-shadow:var(--sh1)}
+.btn.solid{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 18px -10px color-mix(in srgb,var(--acc) 85%,transparent)}
+.btn.solid:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 18px 28px -12px color-mix(in srgb,var(--acc) 90%,transparent)}
+.btn:not(.solid):not(.text){box-shadow:var(--sh1)}
+.btn:active{box-shadow:none}
+.edu{transition:box-shadow .4s,transform .4s cubic-bezier(.2,.7,.2,1);box-shadow:var(--sh1)}
+.edu:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
+.svc article::before{transition:transform .4s cubic-bezier(.7,0,.2,1),box-shadow .4s}
+.svc article:hover::before{box-shadow:var(--sh2)}
+.proc article{transition:background .3s,box-shadow .4s}
+.proc article:hover{background:var(--panel);box-shadow:var(--sh2);z-index:1}
+.proj{transition:background .4s,box-shadow .5s cubic-bezier(.2,.7,.2,1)}
+.proj:hover{box-shadow:var(--sh3);position:relative;z-index:1}
+.phone{box-shadow:0 2px 3px rgba(0,0,0,.25),0 22px 34px -14px rgba(0,0,0,.55),0 48px 60px -30px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.1)}
+.browser{box-shadow:0 2px 3px rgba(0,0,0,.2),0 22px 34px -14px rgba(0,0,0,.5),0 48px 60px -30px rgba(0,0,0,.55)}
+.stage .frame{box-shadow:0 2px 4px rgba(6,30,24,.12),0 22px 34px -14px rgba(6,30,24,.4),0 54px 74px -36px rgba(6,30,24,.55)}
+.stage,.phone,.browser{will-change:transform}
+.form input:focus,.form textarea:focus{box-shadow:0 10px 16px -12px #6fd3b5}
+@media (max-width:860px){.proj:hover{box-shadow:none}}

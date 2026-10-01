@@ -1,25 +1,26 @@
 /* ====== SHUDHU EI FILE EDIT KORLEI HOBE ====== */
 const SITE = {
   name: "Ruhul Amin",                      // <-- apnar nam
-  role: "Web Developer & EEE Student",                  // <-- apnar porichoy
-  tagline: "I build fast, reliable websites and online stores, with an engineer's eye for detail.", // <-- hero er choto porichoy
+  role: "AI Developer & Vibe Coder",                  // <-- apnar porichoy
+  tagline: "I turn ideas into working apps and websites using AI, with an engineer's eye for every detail.", // <-- hero er choto porichoy
   status: "Available for new projects",   // <-- hero er sobuj status; na chaile "" rakhun
   location: "Bangladesh",
   education: { school: "Sylhet Engineering College", degree: "Electrical and Electronic Engineering" },
   cv: "downloads/cv.pdf",                  // CV thakle downloads/ e rakhun, na thakle "" rakhun
   photo: "assets/photo.jpg",              // <-- nijer chobi assets/ folder e dile hoy (na dile initials dekhabe)
   about: [
-    "I'm Ruhul Amin, a web developer and an Electrical and Electronic Engineering student at Sylhet Engineering College.",
-    "I bring an engineer's problem-solving mindset to web development. I build fast, responsive websites and online stores, such as RumeDio Shop, an e-commerce platform for customers across Bangladesh.",
-    "I enjoy learning new technologies and turning real-world problems into simple, reliable digital products."
+    "I'm Ruhul Amin, an AI developer and vibe coder, and an Electrical and Electronic Engineering student at Sylhet Engineering College.",
+    "I build websites, web apps and Android apps by pairing AI tools with an engineer's problem-solving mindset. That lets me take an idea from prompt to a live product quickly, as with RumeDio Shop and YT BG Player.",
+    "I care about clean results: fast, reliable and easy to use. I keep learning new AI tools and turn real problems into simple digital products."
   ],
   services: [
-    { title: "Website Development", text: "Fast, responsive websites built with clean code and a clear focus on your goals." },
-    { title: "E-commerce Stores", text: "Online shops with catalogue, cart, customer accounts and cash-on-delivery checkout, like RumeDio Shop." },
+    { title: "AI-Assisted Development", text: "Fast, high-quality websites and apps built by combining AI tools with careful human review." },
+    { title: "Websites & E-commerce", text: "Responsive websites and online stores with catalogue, cart, accounts and cash-on-delivery checkout, like RumeDio Shop." },
     { title: "Android Apps", text: "Focused Android apps, like YT BG Player for background listening." },
     { title: "UI & Responsive Design", text: "Sharp interfaces that work smoothly on phones, tablets and desktops." }
   ],
   skills: [
+    { group: "AI", items: ["Vibe coding", "Prompt engineering", "AI-assisted development"] },
     { group: "Web", items: ["HTML", "CSS", "JavaScript", "Responsive design", "Single-page apps"] },
     { group: "Mobile", items: ["Android", "Kotlin", "Media3"] },
     { group: "Tools", items: ["Git", "GitHub", "Vercel"] },
@@ -28,7 +29,7 @@ const SITE = {
   process: [
     { title: "Understand", text: "We talk through your goals, audience and budget so the scope is clear before any code is written." },
     { title: "Design", text: "I plan the structure and look first, so you can see the direction early and give feedback." },
-    { title: "Build", text: "Clean, fast, mobile-friendly code, checked across different screen sizes." },
+    { title: "Build", text: "Clean, fast, mobile-friendly code, built with AI tools and checked by hand across screen sizes." },
     { title: "Launch", text: "I deploy it, make sure everything works and hand over what you need to manage it." }
   ],
   projects: [
