@@ -175,7 +175,7 @@ html:not(.seen){--o:1.25s}
 }
 
 /* ---- v4 strength ---- */
-.skip{position:absolute;left:-999px;top:0}.skip:focus{left:16px;top:16px;z-index:200;background:var(--ink);color:var(--bg);padding:10px 16px;text-decoration:none}
+.skip{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip:focus{width:auto;height:auto;clip-path:none;left:16px;top:16px;z-index:200;background:var(--ink);color:var(--bg);padding:10px 16px;text-decoration:none}
 .head h2 sup{font-size:1em;color:var(--hot-t);margin-left:8px;letter-spacing:.05em}
 .proc{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px;border-top:2px solid var(--ink)}
 .proc article{padding:28px 24px 8px;border-right:1px solid var(--line)}
@@ -335,11 +335,48 @@ body{overflow-x:clip}
 /* ---- v10 photo detail: seal, sweep, breathing ---- */
 @keyframes sqturn{0%,65%{transform:rotate(0)}85%,100%{transform:rotate(90deg)}}
 .stage:hover .stage .frame{position:relative}
-.stage .frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.34) 50%,transparent 62%);transform:translateX(-120%);animation:sweep 9s 3.6s cubic-bezier(.45,0,.2,1) infinite}
-@keyframes sweep{0%{transform:translateX(-120%)}24%,100%{transform:translateX(120%)}}
+.stage .frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.34) 50%,transparent 60%) no-repeat;background-size:300% 100%;background-position:130% 0;animation:sweep 9s 3.6s cubic-bezier(.45,0,.2,1) infinite}
+@keyframes sweep{0%{background-position:130% 0}26%,100%{background-position:-30% 0}}
 .stage .l1{animation:br1 7s ease-in-out infinite}.stage .l2{animation:br2 7s ease-in-out infinite}
 @keyframes br1{50%{translate:4px 4px}}@keyframes br2{50%{translate:9px 9px}}
 .stage .sq{animation:sqturn 6s 1s cubic-bezier(.65,0,.35,1) infinite}
 
 /* safety: an old index.html may still contain the removed badge */
 .seal,.stage>svg{display:none!important}
+
+/* ---- phone safety: never allow sideways scrolling or blank space on the right ---- */
+html{overflow-x:hidden;overscroll-behavior-x:none}
+@supports (overflow:clip){html{overflow-x:clip}}
+html,body{max-width:100%;touch-action:pan-y pinch-zoom}
+.ticker,.aurora,.hero,.visual{contain:paint}
+.hero{overflow:clip}
+img,svg,video{max-width:100%}
+
+/* ---- v13 touch & mobile motion ---- */
+.btn .ripple{position:absolute;z-index:-1;border-radius:50%;pointer-events:none;background:currentColor;opacity:.22;transform:scale(0);animation:rip .65s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+.btn:active{scale:.96}.tx:active{opacity:.6}.chip:active,.group p span:active{color:var(--acc)}
+.photo.spread .l1{transform:translate3d(22px,22px,-36px)}.photo.spread .l2{transform:translate3d(44px,44px,-72px)}
+.photo.spread .sq{rotate:90deg}.sq{transition:rotate .5s cubic-bezier(.3,1.6,.5,1)}
+
+@media (hover:none){
+ .svc article.is-active::before{transform:scaleY(1);box-shadow:var(--sh2)}
+ .svc article.is-active h3{color:var(--acc);font-style:italic}
+ .proc article.is-active::before{transform:scaleX(1)}
+ .proc article.is-active{background:var(--panel);box-shadow:var(--sh2)}
+ .proc article.is-active b{color:var(--hot-t);transform:translateY(-6px)}
+ .edu.is-active{box-shadow:var(--sh2);transform:translateY(-3px)}
+ .group.is-active p span{color:var(--acc)}.group.is-active h3{color:var(--ink)}
+ .proj.is-active{background:var(--panel);box-shadow:var(--sh3)}
+ .proj.is-active .visual::before{opacity:1}
+ .proj.is-active h3{color:var(--acc)}
+ .proj.is-active .n{letter-spacing:.3em}.proj .n{transition:letter-spacing .5s}
+}
+@media (max-width:860px){
+ .proj{margin:0 -16px;padding:36px 16px}
+ #nav{display:flex;visibility:hidden;opacity:0;transform:translateY(-10px);pointer-events:none;box-shadow:var(--sh2);transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s .4s}
+ #nav.open{visibility:visible;opacity:1;transform:none;pointer-events:auto;transition-delay:0s}
+ #nav a{opacity:0;transform:translateX(-16px);transition:opacity .35s,transform .5s cubic-bezier(.2,.7,.2,1),color .2s}
+ #nav.open a{opacity:1;transform:none}
+ #nav.open a:nth-child(1){transition-delay:.06s}#nav.open a:nth-child(2){transition-delay:.11s}#nav.open a:nth-child(3){transition-delay:.16s}#nav.open a:nth-child(4){transition-delay:.21s}#nav.open a:nth-child(5){transition-delay:.26s}
+}

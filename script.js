@@ -74,6 +74,7 @@ addEventListener('scroll', () => {
 }, { passive: true });
 const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); } }), { threshold: .1 });
 document.querySelectorAll('.rv,.row').forEach(el => rv.observe(el));
+if (!('IntersectionObserver' in window)) document.querySelectorAll('.rv,.row').forEach(el => el.classList.add('in'));
 const links = [...document.querySelectorAll('#nav a')];
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.hash === '#' + e.target.id));
@@ -148,3 +149,29 @@ if (matchMedia('(hover:hover)').matches && !reduced) {
 // keep ticker speed constant (about 70px per second) however many skills there are
 const setTickSpeed = () => { const t = $('tick'); t.style.animationDuration = Math.max(20, (t.scrollWidth / 2) / 70) + 's'; };
 setTickSpeed(); document.fonts && document.fonts.ready.then(setTickSpeed);
+
+// ---- touch / mobile interactions ----
+// press ripple on buttons (all devices)
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest('.btn'); if (!b || reduced) return;
+  const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2, s = document.createElement('span');
+  s.className = 'ripple'; s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+  b.appendChild(s); setTimeout(() => s.remove(), 650);
+});
+const menuLabel = () => $('menu').textContent = $('nav').classList.contains('open') ? 'Close' : 'Menu';
+$('menu').addEventListener('click', menuLabel); $('nav').addEventListener('click', menuLabel);
+
+if (matchMedia('(hover:none)').matches && !reduced) {
+  // 1) scroll spotlight: the block at the middle of the screen gets the "hover" look
+  const act = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-active', e.isIntersecting)), { rootMargin: '-42% 0px -42% 0px' });
+  document.querySelectorAll('.svc article,.proc article,.proj,.edu,.group').forEach(el => act.observe(el));
+  // 2) scroll-linked 3D tilt for the photo stack and project mockups
+  const tilt = [...document.querySelectorAll('.stage,.visual')]; let busy = false;
+  const upd = () => { busy = false; const vh = innerHeight;
+    tilt.forEach(el => { const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return;
+      const p = Math.max(-1, Math.min(1, ((r.top + r.height / 2) - vh / 2) / (vh / 2)));
+      el.style.setProperty('--rx', (-p * 9) + 'deg'); el.style.setProperty('--ry', (p * -6) + 'deg'); }); };
+  addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(upd); } }, { passive: true }); upd();
+  // 3) tap the photo to spread its layers
+  document.querySelector('.photo').addEventListener('click', e => e.currentTarget.classList.toggle('spread'));
+}
